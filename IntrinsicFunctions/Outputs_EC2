@@ -1,0 +1,20 @@
+# https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html
+
+Resources:
+  Ec2Instance: #Logical ID
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0ad99772 # Amazon Linux AMI in Oregon
+      Tags:
+        - Key: Name
+          Value: A simple example
+
+Outputs:
+  ServerDNS:
+    Description: EC2 Instance DNS Value
+    Value: !GetAtt
+      - Ec2Instance
+      - PublicDnsName
+    Export:
+      Name: !Join [ ":", [ !Ref "AWS::StackName", ServerDNS ] ]

@@ -1,0 +1,16 @@
+Mappings:
+  RegionMap:
+    us-west-1:
+      AMI: ami-0e86606d
+    us-west-2:
+      AMI: ami-0ad99772
+
+Resources:
+  Ec2Instance: #Logical ID
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: !FindInMap     # IntrinsicFunction
+        - RegionMap           # MapName : Mappings from earlier in the code
+        - !Ref 'AWS::Region'  # TopLevelKey
+        - AMI                 # SecondLevelKey

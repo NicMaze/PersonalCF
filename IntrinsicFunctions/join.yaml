@@ -1,0 +1,15 @@
+# https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-join.html
+# !Join [ delimiter,[comma-delimited list of values]]
+# !Join [":",[a,b,c]]  # "a:b:c"
+
+# Join intrinsic function used on an EC2 instance
+Resources:
+  Ec2Instance: #Logical ID
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0ad99772 # Amazon Linux AMI in Oregon
+      Tags:
+        - Key: Name
+          Value: !Join [ " ", [EC2, Instance, with, Fn, Join]]
+          # Returns name value equal to "EC2 Instance with Fn Join"
