@@ -303,5 +303,5 @@ Outputs:
         Value: !Ref PrivateSubnet2
 
     PrivateSubnet3:
-        Description: A reference to the private subnet in the 2rd Availability Zone
+        Description: A reference to the private subnet in the 3rd Availability Zone
         Value: !Ref PrivateSubnet3
